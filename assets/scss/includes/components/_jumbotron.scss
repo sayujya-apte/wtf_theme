@@ -1,16 +1,9 @@
 /* Jumbotron styles
 -------------------------------------------------- */
 
-// Move down content because we have a fixed navbar + (desktop) fixed info bar
+// Move down content because we have a fixed navbar
 main {
-  padding-top: 10rem;
-}
-
-// On mobile the info bar scrolls away, so only the navbar needs clearing
-@media (max-width: 767.98px) {
-  main {
-    padding-top: 1rem;
-  }
+  padding-top: 7.5rem;
 }
 
 .jumbotron {

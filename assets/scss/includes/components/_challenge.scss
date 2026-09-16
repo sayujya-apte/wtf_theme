@@ -46,6 +46,100 @@ $challenge-cut: polygon(
   }
 }
 
+// Team stats card shown at the top of the challenges page
+.team-stats-card {
+  .team-stats-inner {
+    clip-path: $challenge-cut;
+    background-color: var(--bs-body-bg);
+    padding: 1.75rem 2rem;
+
+    .team-stats-name {
+      color: var(--bs-primary);
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 1px solid var(--bs-border-color);
+      padding-bottom: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .team-stats-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2.25rem;
+
+      .team-stats-stat {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--bs-secondary-color);
+
+        i {
+          color: var(--bs-primary);
+          font-size: 0.95rem;
+        }
+
+        .team-stats-value {
+          color: var(--bs-primary);
+          font-size: 1.3rem;
+          font-weight: 700;
+          line-height: 1;
+        }
+      }
+    }
+
+    .team-stats-progress {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .progress {
+        flex: 1;
+        height: 10px;
+        background-color: var(--bs-border-color);
+        border-radius: 0;
+      }
+
+      .progress-bar {
+        background-color: var(--bs-primary);
+        border-radius: 0;
+      }
+
+      .team-stats-progress-label {
+        white-space: nowrap;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--bs-secondary-color);
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .team-stats-card .team-stats-inner {
+    padding: 1.5rem 1.25rem;
+
+    .team-stats-name {
+      font-size: 1.4rem;
+    }
+
+    .team-stats-stats {
+      gap: 1.35rem;
+
+      .team-stats-value {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
 // The challenge modal only shows the "Challenge" tab; hide the tab bar
 #challenge-window {
   .nav-tabs {
@@ -53,12 +147,7 @@ $challenge-cut: polygon(
   }
 }
 
-// Push the modal dialog below the navbar + info bar so it never overlaps them
+// Push the modal dialog below the fixed navbar so it never overlaps it
 #challenge-window.modal {
-  padding-top: 10rem;
-
-  // On mobile the info bar scrolls away, so only the fixed navbar needs clearing
-  @media (max-width: 767.98px) {
-    padding-top: 7rem;
-  }
+  padding-top: 7rem;
 }

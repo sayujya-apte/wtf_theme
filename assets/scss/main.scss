@@ -52,52 +52,6 @@ a {
   }
 }
 
-.info-bar {
-  position: static;
-  background: #000;
-  border-bottom: 1px solid var(--bs-border-color);
-  padding: 0.6rem 0;
-  font-size: 0.875rem;
-
-  .info-bar-team {
-    color: var(--bs-primary);
-    font-weight: 600;
-  }
-
-  .info-bar-stats {
-    display: flex;
-    gap: 1.5rem;
-
-    .info-bar-stat {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-
-      i {
-        color: var(--bs-primary);
-      }
-    }
-  }
-}
-
-// Desktop (md+): keep the info bar pinned right below the fixed navbar
-@media (min-width: 768px) {
-  .info-bar {
-    position: fixed;
-    top: 6.3rem;
-    left: 0;
-    right: 0;
-    z-index: 1030;
-  }
-}
-
-// Mobile (<md): let the info bar scroll away with the page, clearing the fixed navbar
-@media (max-width: 767.98px) {
-  .info-bar {
-    margin-top: 7rem;
-  }
-}
-
 blockquote {
   border-left: 4px solid $secondary;
   padding-left: 15px;

@@ -242,6 +242,53 @@ Alpine.data("Challenge", () => ({
   },
 }));
 
+Alpine.data("TeamStats", () => ({
+  loaded: false,
+  solvedCount: 0,
+  total: 0,
+  score: 0,
+  rank: null,
+
+  async init() {
+    this.fetchStats();
+  },
+
+  async fetchStats() {
+    try {
+      let challengesResp = await CTFd.fetch("/api/v1/challenges");
+      challengesResp = await challengesResp.json();
+
+      let challenges = challengesResp.data || [];
+      let solved = challenges.filter(c => c.solved_by_me);
+      this.solvedCount = solved.length;
+      this.total = challenges.length;
+      this.score = solved.reduce((sum, c) => sum + c.value, 0);
+
+      let standings = await CTFd.pages.scoreboard.getScoreboard();
+      let teamId = window.init?.teamId;
+      let teamName = window.init?.teamName;
+      let entry = (standings || []).find(s => s.id === teamId || s.name === teamName);
+      this.rank = entry ? entry.pos : null;
+
+      this.loaded = true;
+    } catch (e) {
+      this.loaded = true;
+    }
+  },
+
+  formatCount() {
+    return this.solvedCount.toString().padStart(2, "0");
+  },
+
+  get pct() {
+    return this.total > 0 ? (this.solvedCount / this.total) * 100 : 0;
+  },
+
+  get rankLabel() {
+    return "#" + (this.rank || "--");
+  },
+}));
+
 Alpine.data("ChallengeBoard", () => ({
   loaded: false,
   challenges: [],

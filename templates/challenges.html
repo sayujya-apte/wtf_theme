@@ -9,6 +9,43 @@
       </div>
     </div>
 
+    {% if authed() and Configs.user_mode == "teams" %}
+      <div
+        class="team-stats-card challenge-card-clip mb-4"
+        x-data="TeamStats"
+        @load-challenges.window="fetchStats()"
+      >
+        <div class="team-stats-inner">
+          <div class="team-stats-name">{{ Team.name }}</div>
+
+          <div class="team-stats-stats">
+            <div class="team-stats-stat">
+              <i class="fas fa-check-circle"></i>
+              <span class="team-stats-value" x-text="formatCount()"></span>
+              <span>{% trans %}solved{% endtrans %}</span>
+            </div>
+            <div class="team-stats-stat">
+              <i class="fas fa-star"></i>
+              <span class="team-stats-value" x-text="score"></span>
+              <span>{% trans %}pts{% endtrans %}</span>
+            </div>
+            <div class="team-stats-stat">
+              <i class="fas fa-trophy"></i>
+              <span class="team-stats-value" x-text="rankLabel"></span>
+              <span>{% trans %}rank{% endtrans %}</span>
+            </div>
+          </div>
+
+          <div class="team-stats-progress">
+            <div class="progress">
+              <div class="progress-bar" x-bind:style="`width: ${pct}%`"></div>
+            </div>
+            <span class="team-stats-progress-label" x-text="`${solvedCount} / ${total} challenges`"></span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
     <div 
       x-data="ChallengeBoard" 
       @load-challenges.window="loadChallenges()" 
