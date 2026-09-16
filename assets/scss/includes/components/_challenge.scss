@@ -151,3 +151,71 @@ $challenge-cut: polygon(
 #challenge-window.modal {
   padding-top: 7rem;
 }
+
+// Challenge modal: clipped corners + highlight-colour border via a 1px lime wrapper
+#challenge-window .modal-content {
+  clip-path: $challenge-cut;
+  background-color: var(--bs-primary);
+  border: none;
+  border-radius: 0;
+  padding: 1px;
+
+  .modal-body {
+    clip-path: $challenge-cut;
+    background-color: var(--bs-body-bg);
+  }
+}
+
+// Tag badges in the challenge use the highlight colour instead of bg-info
+// (!important is required to beat Bootstrap's .bg-info utility)
+#challenge-window .challenge-tag.badge {
+  background-color: var(--bs-primary) !important;
+  color: #000;
+  letter-spacing: 1px;
+}
+
+// Flag input: sharp square with a highlight-colour border
+#challenge-window .challenge-input {
+  border: 1px solid var(--bs-primary);
+  border-radius: 0;
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+
+  &:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(201, 251, 5, 0.25);
+  }
+}
+
+// Asset download buttons: sharp squares in the highlight colour
+#challenge-window .btn-file {
+  background-color: var(--bs-primary);
+  color: #000;
+  border: none;
+  border-radius: 0;
+
+  &:hover {
+    color: #000;
+    filter: brightness(1.1);
+  }
+}
+
+// Submit button: clipped corners + highlight colour
+#challenge-window .challenge-submit {
+  clip-path: $challenge-cut;
+  background-color: var(--bs-primary);
+  color: #000;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &:hover {
+    color: #000;
+    filter: brightness(1.1);
+  }
+}
+
+// Team enrollment page: Create Team / Join Team buttons get clipped corners
+.team-enrollment .btn {
+  clip-path: $challenge-cut;
+}

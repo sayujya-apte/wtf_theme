@@ -52,6 +52,47 @@ a {
   }
 }
 
+// Footer credit line
+.footer .container {
+  color: var(--bs-primary);
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+// Auth pages (login / reset password / create team / join team):
+// sharp square inputs with highlight borders + sharp-square highlight buttons
+.auth-login,
+.auth-reset,
+.auth-create-team,
+.auth-join-team {
+  .form-control {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    border: 1px solid var(--bs-primary);
+    border-radius: 0;
+
+    &:focus {
+      border-color: var(--bs-primary);
+      box-shadow: 0 0 0 0.2rem rgba(201, 251, 5, 0.25);
+    }
+  }
+
+  .btn-primary,
+  .btn-success {
+    --bs-btn-bg: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-color: #000;
+    --bs-btn-hover-bg: var(--bs-primary);
+    --bs-btn-hover-border-color: var(--bs-primary);
+    --bs-btn-hover-color: #000;
+    --bs-btn-active-bg: var(--bs-primary);
+    --bs-btn-active-border-color: var(--bs-primary);
+    --bs-btn-active-color: #000;
+    --bs-btn-focus-shadow-rgb: 201, 251, 5;
+    border-radius: 0;
+  }
+}
+
 blockquote {
   border-left: 4px solid $secondary;
   padding-left: 15px;
