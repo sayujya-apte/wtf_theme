@@ -113,7 +113,7 @@ Alpine.data("SetupForm", () => ({
       integration_setup_url: window.location.origin + r + "/setup/integrations",
       start: document.querySelector("#start-preview").value,
       end: document.querySelector("#end-preview").value,
-      platform: "CTFd",
+      platform: document.querySelector("#ctf_name").value,
       state: window.STATE,
     };
 
@@ -128,24 +128,7 @@ Alpine.data("SetupForm", () => ({
   },
 
   submitSetup(e) {
-    if (document.querySelector("#newsletter-checkbox").checked) {
-      let email = e.target.querySelector("input[name=email]").value;
-      let params = {
-        email: email,
-        b_38e27f7d496889133d2214208_d7c3ed71f9: "",
-        c: "jsonp_callback_" + Math.round(10000 * Math.random()),
-      };
-      const ret = [];
-      for (let p in params) {
-        ret.push(encodeURIComponent(p) + "=" + encodeURIComponent(params[p]));
-      }
-
-      var script = document.createElement("script");
-      script.src =
-        "https://newsletters.ctfd.io/lists/ot889gr1sa0e1/subscribe/post-json?" +
-        ret.join("&");
-      document.head.appendChild(script);
-    }
+    return;
   },
 }));
 

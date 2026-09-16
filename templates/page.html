@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="container">
-    {{ content | safe }}
-  </div>
+  {% if request.path == "/" %}
+    <script>
+      window.location.replace("{{ url_for('challenges.listing') }}");
+    </script>
+  {% else %}
+    <div class="container">
+      {{ content | safe }}
+    </div>
+  {% endif %}
 {% endblock %}
 
 {% block scripts %}

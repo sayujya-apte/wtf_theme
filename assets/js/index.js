@@ -19,6 +19,7 @@ import "./components/language";
 
 dayjs.extend(advancedFormat);
 CTFd.init(window.init);
+window.CTFd = CTFd;
 
 (() => {
   styles();

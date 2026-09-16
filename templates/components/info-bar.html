@@ -1,0 +1,33 @@
+{% if authed() and Configs.user_mode == "teams" %}
+<div class="info-bar fixed-top"
+  x-data="{
+    score: 0,
+    solved: 0,
+    async fetchScore() {
+      try {
+        let resp = await CTFd.fetch('/api/v1/challenges');
+        let data = await resp.json();
+        let s = data.data.filter(c => c.solved_by_me);
+        this.score = s.reduce((a, c) => a + c.value, 0);
+        this.solved = s.length;
+      } catch (e) {}
+    },
+  }"
+  x-init="fetchScore()"
+  @load-challenges.window="fetchScore()"
+>
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="info-bar-team">{{ Team.name }}</div>
+    <div class="info-bar-stats">
+      <span class="info-bar-stat">
+        <i class="fas fa-check-circle"></i>
+        <span x-text="solved"></span> {% trans %}solved{% endtrans %}
+      </span>
+      <span class="info-bar-stat">
+        <i class="fas fa-star"></i>
+        <span x-text="score"></span> {% trans %}pts{% endtrans %}
+      </span>
+    </div>
+  </div>
+</div>
+{% endif %}

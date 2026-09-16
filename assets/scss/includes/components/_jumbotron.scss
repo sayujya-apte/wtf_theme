@@ -1,9 +1,16 @@
 /* Jumbotron styles
 -------------------------------------------------- */
 
-// Move down content because we have a fixed navbar that is 3.5rem tall
+// Move down content because we have a fixed navbar + (desktop) fixed info bar
 main {
-  padding-top: 3.5rem;
+  padding-top: 10rem;
+}
+
+// On mobile the info bar scrolls away, so only the navbar needs clearing
+@media (max-width: 767.98px) {
+  main {
+    padding-top: 1rem;
+  }
 }
 
 .jumbotron {
@@ -11,7 +18,7 @@ main {
   margin-bottom: 2rem;
   text-align: center;
 
-  background-color: var(--bs-dark);
+  background-color: var(--bs-body-bg);
   color: var(--bs-white);
 }
 

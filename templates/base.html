@@ -41,6 +41,7 @@
 </head>
 <body>
 {% include "components/navbar.html" %}
+{% include "components/info-bar.html" %}
 
 <main role="main">
   {% block content %}
@@ -50,13 +51,7 @@
 {% include "components/snackbar.html" %}
 
 <footer class="footer">
-  <div class="container text-center">
-    <a href="https://ctfd.io" class="text-secondary">
-      <small class="text-muted">
-        {% trans %}Powered by CTFd{% endtrans %}
-      </small>
-    </a>
-  </div>
+  <div class="container text-center"></div>
 </footer>
 
 {% include "components/notifications.html" %}

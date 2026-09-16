@@ -9,32 +9,56 @@
   }
 }
 
-[data-bs-theme="light"] .challenge-button {
-  border: none;
-  box-shadow: 0 0 15px var(--bs-secondary);
+$challenge-cut: polygon(
+  16px 0,
+  100% 0,
+  100% calc(100% - 16px),
+  calc(100% - 16px) 100%,
+  0 100%,
+  0 16px
+);
 
-  &.challenge-solved {
-    background-color: #29c830;
+.challenge-card-clip {
+  clip-path: $challenge-cut;
+  background-color: var(--bs-primary);
+  padding: 1px;
+
+  .challenge-button {
+    clip-path: $challenge-cut;
+    background-color: var(--bs-body-bg);
+    color: var(--bs-primary);
+    border: none;
 
     &:hover {
-      background-color: #37d63e;
+      color: #000;
+      background-color: var(--bs-primary);
+    }
+
+    &.challenge-solved {
+      background-color: var(--bs-primary);
+      color: #000;
+
+      &:hover {
+        background-color: var(--bs-primary);
+        color: #000;
+      }
     }
   }
 }
 
-[data-bs-theme="dark"] .challenge-button {
-  border: none;
-  background-color: var(--bs-gray-dark);
-
-  &:hover {
-    background-color: var(--bs-gray);
+// The challenge modal only shows the "Challenge" tab; hide the tab bar
+#challenge-window {
+  .nav-tabs {
+    display: none;
   }
+}
 
-  &.challenge-solved {
-    background-color: #29c830;
+// Push the modal dialog below the navbar + info bar so it never overlaps them
+#challenge-window.modal {
+  padding-top: 10rem;
 
-    &:hover {
-      background-color: #37d63e;
-    }
+  // On mobile the info bar scrolls away, so only the fixed navbar needs clearing
+  @media (max-width: 767.98px) {
+    padding-top: 7rem;
   }
 }

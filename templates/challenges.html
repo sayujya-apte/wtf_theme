@@ -1,13 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="jumbotron">
-    <div class="container">
-      <h1>
-        {% trans %}Challenges{% endtrans %}
-      </h1>
-    </div>
-  </div>
 
   <div class="container">
     <div class="row">
@@ -45,20 +38,22 @@
               <div class="challenges-row row">
                 <template x-for="(c, idx) in getChallenges(category)" :key="c.id">
                   <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                    <button
-                        class="challenge-button btn btn-dark w-100 h-100"
-                        :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];"
-                        :value="c.id" @click="loadChallenge(c.id)"
-                    >
+                    <div class="challenge-card-clip">
+                      <button
+                          class="challenge-button btn w-100 h-100"
+                          :class="[
+                            c.solved_by_me ? 'challenge-solved' : '',
+                            ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
+                          ];"
+                          :value="c.id" @click="loadChallenge(c.id)"
+                      >
 
-                      <div class="challenge-inner my-3">
-                        <p x-text="c.name"></p>
-                        <span x-text="c.value"></span>
-                      </div>
-                    </button>
+                        <div class="challenge-inner my-3">
+                          <p x-text="c.name"></p>
+                          <span x-text="c.value"></span>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </template>
               </div>
