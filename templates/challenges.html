@@ -11,28 +11,20 @@
 
     {% if authed() and Configs.user_mode == "teams" %}
       <div
-        class="team-stats-card challenge-card-clip mb-4"
+        class="team-stats-card challenge-card-clip mb-2"
         x-data="TeamStats"
         @load-challenges.window="fetchStats()"
       >
         <div class="team-stats-inner">
-          <div class="team-stats-name">{{ Team.name }}</div>
+          <div class="team-stats-name-row">
+            <div class="team-stats-name">{{ Team.name }}</div>
 
-          <div class="team-stats-stats">
-            <div class="team-stats-stat">
-              <i class="fas fa-check-circle"></i>
-              <span class="team-stats-value" x-text="formatCount()"></span>
-              <span>{% trans %}solved{% endtrans %}</span>
-            </div>
-            <div class="team-stats-stat">
-              <i class="fas fa-star"></i>
-              <span class="team-stats-value" x-text="score"></span>
-              <span>{% trans %}pts{% endtrans %}</span>
-            </div>
-            <div class="team-stats-stat">
-              <i class="fas fa-trophy"></i>
-              <span class="team-stats-value" x-text="rankLabel"></span>
-              <span>{% trans %}rank{% endtrans %}</span>
+            <div class="team-stats-stats">
+              <div class="team-stats-stat">
+                <i class="fas fa-star"></i>
+                <span class="team-stats-value" x-text="score"></span>
+                <span>{% trans %}pts{% endtrans %}</span>
+              </div>
             </div>
           </div>
 
@@ -66,7 +58,7 @@
 
       <div x-show="loaded">
         <template x-for="(category, idx) in getCategories()" :key="idx">
-          <div class="pt-5">
+          <div class="pt-3">
             <div class="category-header mb-3">
               <h3 x-text="category"></h3>
             </div>
@@ -87,7 +79,7 @@
 
                         <div class="challenge-inner my-3">
                           <p x-text="c.name"></p>
-                          <span x-text="c.value"></span>
+                          <span x-text="`${c.value} pts`"></span>
                         </div>
                       </button>
                     </div>
