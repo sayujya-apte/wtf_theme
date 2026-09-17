@@ -152,6 +152,11 @@ $challenge-cut: polygon(
   padding-top: 7rem;
 }
 
+// Widen the challenge modal ~1.5x over Bootstrap's default 500px
+#challenge-window .modal-dialog {
+  max-width: 750px;
+}
+
 // Challenge modal: clipped corners + highlight-colour border via a 1px lime wrapper
 #challenge-window .modal-content {
   clip-path: $challenge-cut;
@@ -200,12 +205,13 @@ $challenge-cut: polygon(
   }
 }
 
-// Submit button: clipped corners + highlight colour
+// Submit button: clipped corners, sharp squares + highlight colour
 #challenge-window .challenge-submit {
   clip-path: $challenge-cut;
   background-color: var(--bs-primary);
   color: #000;
   border: none;
+  border-radius: 0;
   text-transform: uppercase;
   letter-spacing: 1px;
 
@@ -215,7 +221,8 @@ $challenge-cut: polygon(
   }
 }
 
-// Team enrollment page: Create Team / Join Team buttons get clipped corners
+// Team enrollment page: Create Team / Join Team buttons get clipped corners + sharp squares
 .team-enrollment .btn {
   clip-path: $challenge-cut;
+  border-radius: 0;
 }
